@@ -204,23 +204,6 @@ const updateLast = (req, res) => {
 
 };
 
-const updateSearch = (req, res) => {
-  lastAdded.bedsOwned++;
-  
-  const savePromise = lastAdded.save();
-  savePromise.then(() => {
-    res.json({
-      name: lastAdded.name,
-      beds: lastAdded.bedsOwned,
-    });
-  });
-
-  savePromise.catch((err) => {
-    res.status(500).json({err});
-  });
-
-};
-
 const notFound = (req, res) => {
   res.status(404).render('notFound', {
     page: req.url,
